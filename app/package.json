@@ -1,0 +1,19 @@
+{
+  "name": "curso-blog-app",
+  "version": "1.0.0",
+  "description": "blog",
+  "main": "app.js",
+  "dependencies": 
+    { "express": "^4.18.2",
+        "mysql": "^2.18.1"
+    },
+  "devDependencies": 
+    {
+
+    },
+  "scripts": 
+    {
+      "start": "node app.js",
+      "dev": "nodemon app.js"
+    }
+}
