@@ -18,7 +18,7 @@ connection.connect( function(error)
 
 app.get('/',function(req,res)
 		{
-			const response = { message:"api blog" };
+			const response = { status: "success",message:"api blog" };
 		  res.status(200).json(response);
 		}
 	); 

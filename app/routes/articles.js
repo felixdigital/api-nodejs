@@ -44,31 +44,23 @@ router.get('/:id',function(req,res)
 											response = { status:"warning",message: "not found" };
 											res.status(404).json(response);
 										}
-							}
+								}
 						}
 			);
 	}
 );
 
 // ruta: /articles/add/new			insertar un articulo
-router.get('/add/new',function(req,res)
+router.post('/add/new',function(req,res)
 	{
-			/* 	const row = {
-			title: req.body.title,
-			content: req.body.content,
-			extract: req.body.extract,
-			author_name: req.body.author_name,
-			author_email: req.body.author_email,
-			created_at : req.body.created_at
-		} */
-		
-		const row = {
-				title: "test_title_add",
-				content:  "test_content_add",
-				extract:  "test_extract_add",
-				author_name:  "test_name_add",
-				author_email:  "test__mail_add"
-		}
+			const row = {
+				title: req.body.title,
+				content: req.body.content,
+				extract: req.body.extract,
+				author_name: req.body.author_name,
+				author_email: req.body.author_email,
+				created_at : req.body.created_at
+			} 
 		
 		var sql;
 		sql =  "INSERT INTO articles "
@@ -95,15 +87,16 @@ router.get('/add/new',function(req,res)
 );
 
 // ruta: /articles/edit/id			editar un articulo
-router.get('/edit/:id',function(req,res)
+router.put('/edit/:id',function(req,res)
 	{
 		const row = {
-			title: "test_edit",
-			content:  "test_edit",
-			extract:  "test_edit",
-			author_name:  "test_edit",
-			author_email:  "test_edit"
-		}
+			title: req.body.title,
+			content: req.body.content,
+			extract: req.body.extract,
+			author_name: req.body.author_name,
+			author_email: req.body.author_email,
+			created_at : req.body.created_at
+		} 
 
 		const id = req.params.id;
 
@@ -140,7 +133,7 @@ router.get('/edit/:id',function(req,res)
 );
 
 // ruta: /articles/delete/id			eliminar un articulo
-router.get('/delete/:id',function(req,res)
+router.delete('/delete/:id',function(req,res)
 	{
 		const id = req.params.id;
 		sql = "delete from articles where id=?";
@@ -171,7 +164,7 @@ router.get('/delete/:id',function(req,res)
 	}
 );
 
-// ruta: articles/5/comments	todos los comentarios del articulo 
+// ruta: articles/id/comments	todos los comentarios del articulo 
 router.get('/:id/comments',function(req,res)
 	{	
 		const id = req.params.id;
@@ -203,15 +196,15 @@ router.get('/:id/comments',function(req,res)
 );
 
 // ruta: articles/id/add/comment	añadir comentario al articulo 
-router.get('/:id/add/comment',function(req,res)
+router.post('/:id/add/comment',function(req,res)
 	{	
 		const id = req.params.id;
 
-		const row = {
-			content:  "add_content",
-			author_name:  "add_autor",
-			author_email:  "add_mail"
-		}
+		const row = {	
+			content: req.body.content,
+			author_name: req.body.author_name,
+			author_email: req.body.author_email	
+		} 
 
 		var sql;
 		sql =  "INSERT INTO comments ";
@@ -240,14 +233,14 @@ router.get('/:id/add/comment',function(req,res)
 
 
 // ruta: articles/id/edit/comment/id	editar el comentario  del articulo 
-router.get('/:id/edit/comment/:idComment',function(req,res)
+router.put('/:id/edit/comment/:idComment',function(req,res)
 	{	
 
-		const row = {
-			content:  "content_edit",
-			author_name:  "autor_edit",
-			author_email:  "mail_edit"
-		}
+		const row = {	
+			content: req.body.content,
+			author_name: req.body.author_name,
+			author_email: req.body.author_email	
+		} 
 
 		const id = req.params.id;
 		const idComment = req.params.idComment;
@@ -287,7 +280,7 @@ router.get('/:id/edit/comment/:idComment',function(req,res)
 );
 
 // ruta: articles/id/delete/comment/id	eliminar el comentario del articulo
-router.get('/:id/delete/comment/:idComment',function(req,res)
+router.delete('/:id/delete/comment/:idComment',function(req,res)
 	{	
 		const id = req.params.id;
 		const idComment = req.params.idComment;
