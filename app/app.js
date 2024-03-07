@@ -1,8 +1,8 @@
 const env = require('./enviroment');
 const express = require('express');
 const app = express();
-const connection = require('./connection');
 app.use( express.json() );
+const connection = require('./core/connection');
 
 connection.connect( function(error)
 	{
@@ -14,7 +14,13 @@ connection.connect( function(error)
 			{
 				console.log(error);
 			}
-	}); 
+	});
+	
+app.listen (env.PORT,function()
+		{
+			console.log( "servidor arrancado en el puerto " + env.PORT );
+		}
+	); 
 
 app.get('/',function(req,res)
 		{
@@ -23,12 +29,9 @@ app.get('/',function(req,res)
 		}
 	); 
 
-	app.listen (env.PORT,function()
-		{
-			console.log( "servidor arrancado en el puerto " + env.PORT );
-		}
-	); 
+//routes
+const articles = require('./routes/articles');
+app.use('/articles',articles);
 
-	//routes
-	const articles = require('./routes/articles');
-	app.use('/articles',articles);
+const comments = require('./routes/comments');
+app.use('/articles',comments);

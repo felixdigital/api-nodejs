@@ -1,4 +1,4 @@
-const env = require('./enviroment');
+const env = require('../enviroment');
 const mysql = require('mysql');
 
 const connection = mysql.createConnection(

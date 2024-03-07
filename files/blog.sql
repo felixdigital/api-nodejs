@@ -1,4 +1,5 @@
 -- Estructura de las tablas
+USE blog;
 
 DROP TABLE IF EXISTS articles;
 
@@ -67,6 +68,9 @@ INSERT INTO comments(id,content,author_name,author_email,created_at,article) val
 (null,'comentario 3','autor 3','mail3@server.com',CURRENT_TIMESTAMP,3),
 (null,'comentario 4','autor 4','mail4@server.com',CURRENT_TIMESTAMP,3),
 (null,'comentario 5','autor 5','mail5@server.com',CURRENT_TIMESTAMP,3);
+
+INSERT INTO comments(id,content,author_name,author_email,created_at,article) values
+(null,'comentario 1','autor 1','mail1@server.com',CURRENT_TIMESTAMP,4);
 
 
 
